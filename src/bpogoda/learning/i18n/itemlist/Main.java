@@ -1,5 +1,8 @@
 package bpogoda.learning.i18n.itemlist;
 	
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -11,7 +14,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("MainView.fxml"));
+			ResourceBundle resourceBundle = ResourceBundle.getBundle("bpogoda.learning.i18n.itemlist.bundles.Messages", Locale.getDefault());
+			
+			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("MainView.fxml"),resourceBundle);
 			Scene scene = new Scene(root,400,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
