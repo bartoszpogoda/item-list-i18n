@@ -46,8 +46,9 @@ public class AddItemTypeController implements Initializable {
 			BigDecimal unitPrice = new BigDecimal(unitpriceTb.getText());
 
 			String imagePath = imagePathTb.getText();
-			if (imagePath == null || getClass().getResource(imagePath) == null) {
-				System.out.println("image path failed");
+			if(imagePath == null || imagePath.isEmpty()) {
+				imagePath = "/default.png";
+			} else if(getClass().getResource(imagePath) == null) {
 				throw new Exception();
 			}
 
