@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<items>
+    <items>
+        <item>
+            <description>Pyszna i zdrowa cebulka</description>
+            <imageUrl>/onion.png</imageUrl>
+            <metrics>
+                <metricsType>ITEM</metricsType>
+                <quantity>5</quantity>
+            </metrics>
+            <name>Cebulka</name>
+            <price>0.50</price>
+        </item>
+        <item>
+            <description>Pyszna i zdrowa marchewka</description>
+            <imageUrl>/carrot.png</imageUrl>
+            <metrics>
+                <metricsType>ITEM</metricsType>
+                <quantity>1</quantity>
+            </metrics>
+            <name>Marchewka</name>
+            <price>0.10</price>
+        </item>
+        <item>
+            <description>Pij wode co dziennie</description>
+            <imageUrl>/water.png</imageUrl>
+            <metrics>
+                <metricsType>FLUID</metricsType>
+                <quantity>2</quantity>
+            </metrics>
+            <name>Woda</name>
+            <price>1.00</price>
+        </item>
+        <item>
+            <description>Pij mleko, będziesz wielki</description>
+            <imageUrl>/milk.png</imageUrl>
+            <metrics>
+                <metricsType>FLUID</metricsType>
+                <quantity>1</quantity>
+            </metrics>
+            <name>Mleko</name>
+            <price>2.00</price>
+        </item>
+        <item>
+            <description>Najlepsza do ciast</description>
+            <imageUrl>/flour.png</imageUrl>
+            <metrics>
+                <metricsType>WEIGHT</metricsType>
+                <quantity>5</quantity>
+            </metrics>
+            <name>Mąka</name>
+            <price>1.20</price>
+        </item>
+    </items>
+</items>

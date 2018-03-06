@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="550.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bpogoda.learning.i18n.itemlist.view.list.ItemListController">
+   <children>
+      <TableView fx:id="table" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="527.0" prefWidth="772.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+        <columns>
+          <TableColumn fx:id="nameCol" editable="false" prefWidth="197.0" text="%list.table.col.name" />
+          <TableColumn fx:id="quantityCol" minWidth="0.0" prefWidth="148.0" text="%list.table.col.quantity" />
+            <TableColumn fx:id="unitPriceCol" editable="false" prefWidth="124.0" text="%list.table.col.price" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</AnchorPane>

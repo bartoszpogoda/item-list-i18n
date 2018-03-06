@@ -8,26 +8,26 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bpogoda.learning.i18n.itemlist.MainController">
+<BorderPane fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bpogoda.learning.i18n.itemlist.view.MainController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="%menu.bar.file">
             <items>
-                  <MenuItem mnemonicParsing="false" text="%menu.item.file.load.data" />
-                  <MenuItem mnemonicParsing="false" text="%menu.item.file.save.data" />
+                  <MenuItem onAction="#onLoadBtn" mnemonicParsing="false" text="%menu.item.file.load.data" />
+                  <MenuItem onAction="#onSaveBtn" mnemonicParsing="false" text="%menu.item.file.save.data" />
                   <SeparatorMenuItem mnemonicParsing="false" text="" />
               <MenuItem mnemonicParsing="false" text="%menu.item.file.close" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="%menu.bar.language">
               <items>
-                  <RadioMenuItem mnemonicParsing="false" text="English">
+                  <RadioMenuItem fx:id="localeEnRadioItem" mnemonicParsing="false" onAction="#onLocaleChanged" selected="true" text="English">
                      <toggleGroup>
                         <ToggleGroup fx:id="languageRadio" />
                      </toggleGroup>
                   </RadioMenuItem>
-                  <RadioMenuItem mnemonicParsing="false" text="Polski" toggleGroup="$languageRadio" />
+                  <RadioMenuItem fx:id="localePlRadioItem" mnemonicParsing="false" onAction="#onLocaleChanged" text="Polski" toggleGroup="$languageRadio" />
               </items>
             </Menu>
           <Menu mnemonicParsing="false" text="%menu.bar.help">
