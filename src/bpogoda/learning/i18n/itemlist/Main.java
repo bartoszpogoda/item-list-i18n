@@ -44,6 +44,7 @@ public class Main extends Application {
 		
 		MainController mainController = (MainController) loader.getController();
 		mainController.setI18nManager(i18nManager);
+		mainController.setPrimaryStage(primaryStage);
 		
 		primaryStage.setScene(scene);
 		primaryStage.show();

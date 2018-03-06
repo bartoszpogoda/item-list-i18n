@@ -19,7 +19,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#onLoadBtn" text="%menu.item.file.load.data" />
                   <MenuItem mnemonicParsing="false" onAction="#onSaveBtn" text="%menu.item.file.save.data" />
                   <SeparatorMenuItem mnemonicParsing="false" text="" />
-              <MenuItem mnemonicParsing="false" text="%menu.item.file.close" />
+              <MenuItem mnemonicParsing="false" onAction="#onCloseBtn" text="%menu.item.file.close" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="%menu.bar.language">
