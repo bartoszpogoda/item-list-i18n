@@ -14,12 +14,14 @@ import bpogoda.learning.i18n.itemlist.model.ItemListWrapper;
 import bpogoda.learning.i18n.itemlist.model.Metrics;
 import bpogoda.learning.i18n.itemlist.model.MetricsType;
 import bpogoda.learning.i18n.itemlist.view.details.DetailsController;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 
 public class ItemListController implements Initializable {
@@ -37,8 +39,12 @@ public class ItemListController implements Initializable {
 	@FXML
 	TableColumn<Item, BigDecimal> unitPriceCol;
 
+	@FXML
+	TableColumn<Item, BigDecimal> totalPriceCol;
+
 	private DetailsController detailsController;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		nameCol.setCellValueFactory(cellData -> cellData.getValue().name());
@@ -59,7 +65,7 @@ public class ItemListController implements Initializable {
 				}
 			};
 		});
-		
+
 		unitPriceCol.setCellValueFactory(cellData -> cellData.getValue().price());
 
 		unitPriceCol.setCellFactory(column -> {
@@ -76,29 +82,54 @@ public class ItemListController implements Initializable {
 						DecimalFormatSymbols decimalFormatSymbols = ((DecimalFormat) format).getDecimalFormatSymbols();
 						decimalFormatSymbols.setCurrencySymbol("");
 						((DecimalFormat) format).setDecimalFormatSymbols(decimalFormatSymbols);
-						
+
 						String formattedAmount = format.format(price);
 
-						setText(formattedAmount + " $");
+						setText(formattedAmount + " zł");
 					}
 				}
 			};
 		});
-		
-		
+
+		totalPriceCol.setCellValueFactory(cellData -> cellData.getValue().totalPrice());
+
+
+		totalPriceCol.setCellFactory(column -> {
+			return new TableCell<Item, BigDecimal>() {
+				@Override
+				protected void updateItem(BigDecimal totalPrice, boolean empty) {
+					super.updateItem(totalPrice, empty);
+
+					if (totalPrice == null || empty) {
+						setText(null);
+					} else {
+						Format format = NumberFormat.getCurrencyInstance(resources.getLocale());
+
+						DecimalFormatSymbols decimalFormatSymbols = ((DecimalFormat) format).getDecimalFormatSymbols();
+						decimalFormatSymbols.setCurrencySymbol("");
+						((DecimalFormat) format).setDecimalFormatSymbols(decimalFormatSymbols);
+
+						String formattedAmount = format.format(totalPrice);
+
+						setText(formattedAmount + " zł");
+					}
+				}
+			};
+		});
+
 		table.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-			if(oldSelection != newSelection) {
-				if(newSelection != null) {
+			if (oldSelection != newSelection) {
+				if (newSelection != null) {
 					detailsController.showDetails(newSelection);
 				}
 			}
 		});
 	}
-	
+
 	public ItemListWrapper getItemList() {
 		return this.itemList;
 	}
-	
+
 	public void setItemList(ItemListWrapper itemList) {
 		this.itemList = itemList;
 
@@ -112,10 +143,9 @@ public class ItemListController implements Initializable {
 	public int getSelectedIndex() {
 		return table.getSelectionModel().getSelectedIndex();
 	}
-	
+
 	public void setSelectedIndex(int index) {
 		table.getSelectionModel().clearAndSelect(index);
 	}
-
 
 }

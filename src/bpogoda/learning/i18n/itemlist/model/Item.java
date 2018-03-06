@@ -13,6 +13,7 @@ public class Item {
 	private final SimpleObjectProperty<Metrics> metrics = new SimpleObjectProperty<>();
 	private final SimpleObjectProperty<BigDecimal> price = new SimpleObjectProperty<>();
 	private final SimpleStringProperty description = new SimpleStringProperty();
+	private final SimpleObjectProperty<BigDecimal> totalPrice = new SimpleObjectProperty<>();
 	
 	private String imageUrl;
 
@@ -26,6 +27,8 @@ public class Item {
 		this.price.set(price);
 		this.description.set(description);
 		this.setImageUrl(imageUrl);
+		
+		totalPrice.set(price.multiply(new BigDecimal(quantity)));
 	}
 
 	public final SimpleStringProperty name() {
@@ -44,6 +47,10 @@ public class Item {
 		return description;
 	}
 	
+	public final SimpleObjectProperty<BigDecimal> totalPrice() {
+		return totalPrice;
+	}
+	
 	public String getName() {
 		return name.get();
 	}
@@ -58,6 +65,10 @@ public class Item {
 
 	public void setMetrics(Metrics metrics) {
 		this.metrics.set(metrics);
+		
+		if(this.getPrice() != null) {			
+			this.totalPrice.set(this.getPrice().multiply(new BigDecimal(metrics.getQuantity())));
+		}
 	}
 
 	public BigDecimal getPrice() {
@@ -66,6 +77,10 @@ public class Item {
 
 	public void setPrice(BigDecimal price) {
 		this.price.set(price);
+
+		if(this.getMetrics() != null) {
+			this.totalPrice.set(this.getPrice().multiply(new BigDecimal(this.getMetrics().getQuantity())));
+		}
 	}
 
 	public String getDescription() {
@@ -83,5 +98,15 @@ public class Item {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
+
+	public BigDecimal getTotalPrice() {
+		return totalPrice.get();
+	}
+
+	public void setTotalPrice(BigDecimal totalPrice) {
+		this.totalPrice.set(totalPrice);
+	}
+	
+
 
 }

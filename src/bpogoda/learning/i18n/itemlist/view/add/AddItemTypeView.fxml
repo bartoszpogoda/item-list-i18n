@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bpogoda.learning.i18n.itemlist.view.add.AddItemTypeController">
+   <children>
+      <GridPane layoutX="48.0" layoutY="32.0" prefHeight="300.0" prefWidth="291.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="60.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="193.0" minWidth="10.0" prefWidth="186.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="154.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="92.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="130.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="141.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="142.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="%list.table.col.name" />
+            <TextField fx:id="nameTb" GridPane.columnIndex="1" />
+            <ComboBox fx:id="typeComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="%gui.add.measurement.unit" GridPane.rowIndex="1" />
+            <Label text="%list.table.col.price" GridPane.rowIndex="2" />
+            <Label text="%gui.add.imagepath" GridPane.rowIndex="3" />
+            <Label text="%list.table.col.desc" GridPane.rowIndex="4" />
+            <TextArea fx:id="descTb" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="imagePathTb" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="unitpriceTb" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <Text layoutX="14.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%menu.item.new">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+      <Button layoutX="225.0" layoutY="455.0" mnemonicParsing="false" onAction="#onAcceptBtn" text="%gui.add.accept" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="10.0" />
+      <Button layoutX="56.0" layoutY="455.0" mnemonicParsing="false" onAction="#onCancelBtn" text="%gui.add.cancel" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="10.0" />
+   </children>
+</AnchorPane>

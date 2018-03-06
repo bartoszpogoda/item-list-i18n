@@ -61,7 +61,7 @@ public class DetailsController implements Initializable {
 		
 		String formattedAmount = format.format(item.getPrice());
 
-		priceTxt.setText(formattedAmount + " $");
+		priceTxt.setText(formattedAmount + " zł");
 		
 		quantityTxt.setText(item.getMetrics().toLocalizedString(resources));
 		

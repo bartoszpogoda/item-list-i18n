@@ -24,6 +24,7 @@ import bpogoda.learning.i18n.itemlist.model.Item;
 import bpogoda.learning.i18n.itemlist.model.ItemList;
 import bpogoda.learning.i18n.itemlist.model.ItemListWrapper;
 import bpogoda.learning.i18n.itemlist.model.MetricsType;
+import bpogoda.learning.i18n.itemlist.view.add.AddItemTypeController;
 import bpogoda.learning.i18n.itemlist.view.details.DetailsController;
 import bpogoda.learning.i18n.itemlist.view.list.ItemListController;
 import javafx.collections.FXCollections;
@@ -33,6 +34,7 @@ import javafx.event.EventTarget;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.RadioMenuItem;
@@ -40,6 +42,7 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 public class MainController implements I18nManagedController, Initializable {
 
@@ -59,10 +62,16 @@ public class MainController implements I18nManagedController, Initializable {
 	private ItemListController itemListController;
 	
 	private ItemListWrapper currentItemList;
+	
+	private Stage primaryStage;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+		if(currentItemList == null) {
+			currentItemList = new ItemListWrapper();
+		}
+		
 		this.resourceBundle = resources;
 
 		Locale locale = resources.getLocale();
@@ -121,7 +130,7 @@ public class MainController implements I18nManagedController, Initializable {
 
 	@FXML
 	private void onCloseBtn() {
-
+		this.primaryStage.close();
 	}
 
 	@FXML
@@ -139,6 +148,7 @@ public class MainController implements I18nManagedController, Initializable {
 
 		itemListController = (ItemListController) loader.getController();
 		itemListController.setDetailsController(detailsController);
+		itemListController.setItemList(currentItemList);
 
 		rootPane.setCenter(listView);
 	}
@@ -185,5 +195,28 @@ public class MainController implements I18nManagedController, Initializable {
 			itemListController.setSelectedIndex(selectedIndex.intValue());
 		}
 		
+	}
+
+	@FXML public void onNewItemTypeBtn() throws IOException {
+		Stage stage = new Stage();
+
+		FXMLLoader loader = new FXMLLoader();
+		loader.setResources(resourceBundle);
+		loader.setLocation(Main.class.getResource("view/add/AddItemTypeView.fxml"));
+		
+		AnchorPane root = (AnchorPane) loader.load();
+		Scene scene = new Scene(root,400,500);
+		
+		AddItemTypeController addItemTypeController = (AddItemTypeController) loader.getController();
+		addItemTypeController.setItemList(currentItemList);
+		addItemTypeController.setContainingStage(stage);
+		
+		stage.setScene(scene);
+		stage.show();
+		
+	}
+	
+	public void setPrimaryStage(Stage primaryStage) {
+		this.primaryStage = primaryStage;
 	}
 }

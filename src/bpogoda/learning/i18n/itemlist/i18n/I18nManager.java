@@ -45,6 +45,7 @@ public class I18nManager {
 		I18nManagedController newController = (I18nManagedController) loader.getController();
 		newController.setI18nManager(this);
 		newController.setAppState(savedAppState);
+		newController.setPrimaryStage(primaryStage);
 
 		primaryStage.setScene(scene);
 		primaryStage.show();
